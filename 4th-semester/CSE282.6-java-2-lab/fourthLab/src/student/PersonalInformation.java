@@ -1,4 +1,5 @@
 package student;
+import faculty.FcultyPersonalInformation,
 public class PersonalInformation {
     String firstName;
     String lastName;
