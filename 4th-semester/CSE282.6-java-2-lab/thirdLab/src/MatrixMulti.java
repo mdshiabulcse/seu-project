@@ -21,8 +21,6 @@ public class MatrixMulti {
                 }
             }
         }
-
-
         System.out.println("Matrix Multiplication:");
         printMatrix(resultMatrix);
     }
