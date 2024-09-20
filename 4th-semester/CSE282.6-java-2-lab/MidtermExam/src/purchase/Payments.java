@@ -9,7 +9,6 @@ public class Payments {
         this.totalAmount = totalAmount;
     }
 
-    // Getter for totalAmount
     public String getTotalAmount() {
         return totalAmount;
     }

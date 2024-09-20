@@ -14,7 +14,7 @@ public class Address {
         this.sameAsBillingAddress = true;
     }
 
-    // Getters and Setters
+
     public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }

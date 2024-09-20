@@ -1,6 +1,6 @@
 package users;
 
-public class MerchantInformation extends BasicInformation{
+public class MerchantInformation extends BasicInformation {
     protected Credentials credentials;
     protected CompanyInformation companyInformation;
 
@@ -8,5 +8,13 @@ public class MerchantInformation extends BasicInformation{
         super(firstName, lastName, personalContact, gender, dateOfBirth, emailAddress);
         this.credentials = credentials;
         this.companyInformation = companyInformation;
+    }
+
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    public CompanyInformation getCompanyInformation() {
+        return companyInformation;
     }
 }

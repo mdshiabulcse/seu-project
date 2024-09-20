@@ -17,7 +17,7 @@ public class ProductInformation {
         this.productPrice = productPrice;
     }
 
-    // Getters
+    // Getter methods
     public String getProductName() {
         return productName;
     }

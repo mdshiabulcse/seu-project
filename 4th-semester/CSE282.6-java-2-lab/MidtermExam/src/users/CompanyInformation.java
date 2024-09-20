@@ -11,7 +11,6 @@ public class CompanyInformation extends Address {
         this.tinNumber = tinNumber;
     }
 
-    // Getters
     public String getCompanyName() {
         return companyName;
     }

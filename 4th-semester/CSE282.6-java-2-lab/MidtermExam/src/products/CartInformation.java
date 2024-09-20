@@ -10,4 +10,16 @@ public class CartInformation {
         this.unitPrice = unitPrice;
         this.grossPrice = grossPrice;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public double getGrossPrice() {
+        return grossPrice;
+    }
 }

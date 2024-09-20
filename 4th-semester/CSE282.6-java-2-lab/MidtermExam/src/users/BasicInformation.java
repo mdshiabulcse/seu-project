@@ -17,7 +17,7 @@ public class BasicInformation extends Address {
         this.emailAddress = emailAddress;
     }
 
-    // Getters
+
     public String getFirstName() {
         return firstName;
     }
