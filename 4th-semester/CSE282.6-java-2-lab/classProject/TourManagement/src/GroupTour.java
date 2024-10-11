@@ -1,19 +1,19 @@
-public class GroupTour extends Tour {
-    private int numberOfPeople;
+class GroupTour extends Tour {
+    private int groupSize;
 
-    public GroupTour(String location, int days, double chargePerPerson, int numberOfPeople) {
+    public GroupTour(String location, int days, double chargePerPerson, int groupSize) {
         super(location, days, chargePerPerson);
-        this.numberOfPeople = numberOfPeople;
+        this.groupSize = groupSize;
     }
 
     @Override
     public double calculateTotalCharge() {
-        return days * chargePerPerson * numberOfPeople;
+        return days * chargePerPerson * groupSize;
     }
 
     @Override
     public void showTourDetails() {
         super.showTourDetails();
-        System.out.println("Number of People: " + numberOfPeople);
+        System.out.println("Group Size: " + groupSize);
     }
 }

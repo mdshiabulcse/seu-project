@@ -1,4 +1,4 @@
-public class SingleTour extends Tour {
+class SingleTour extends Tour {
 
     public SingleTour(String location, int days, double chargePerPerson) {
         super(location, days, chargePerPerson);
