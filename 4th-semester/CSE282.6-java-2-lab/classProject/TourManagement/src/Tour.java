@@ -14,7 +14,7 @@ abstract class Tour {
     public void showTourDetails() {
         System.out.println("\nTour Location: " + location);
         System.out.println("Tour Days: " + days);
-        System.out.println("Charge per Person: $" + chargePerPerson);
-        System.out.println("Total Charge: $" + calculateTotalCharge());
+        System.out.println("Charge per Person: BDT " + chargePerPerson);
+        System.out.println("Total Charge: BDT " + calculateTotalCharge());
     }
 }

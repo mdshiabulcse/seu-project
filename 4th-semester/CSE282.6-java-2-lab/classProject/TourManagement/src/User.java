@@ -11,7 +11,7 @@ class User {
         this.email = email;
     }
 
-    // Getters for user info
+
     public String getUsername() {
         return username;
     }
