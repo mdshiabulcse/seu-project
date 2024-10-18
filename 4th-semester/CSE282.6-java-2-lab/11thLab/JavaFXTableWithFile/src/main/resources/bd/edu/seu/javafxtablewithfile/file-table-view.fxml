@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <TextField fx:id="filePathFiled" layoutX="25.0" layoutY="26.0" />
+       <Button layoutX="175.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadFile" text="Load File" />
+       <Button layoutX="238.0" layoutY="26.0" mnemonicParsing="false" onAction="#uploadFile" text="Upload File" />
+      <TableView fx:id="tableView" layoutY="70.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="608.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <columns>
+            <TableColumn fx:id="indexCol" prefWidth="63.19998323917389" text="ID" />
+             <TableColumn fx:id="nameCol" prefWidth="119.99999237060547" text="Student Name" />
+             <TableColumn fx:id="sidCol" prefWidth="119.99999237060547" text="Student ID" />
+             <TableColumn fx:id="deptCol" prefWidth="130.4000244140625" text="Student Department" />
+             <TableColumn fx:id="batchCol" prefWidth="104.80001831054688" text="Student Batch" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

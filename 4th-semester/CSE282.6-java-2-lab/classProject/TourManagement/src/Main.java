@@ -8,33 +8,33 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // Step 1: Register users
+
         registeredUsers.add(new User("user1", "pass1", "Shiabul Islam", "shiabul@mail.com"));
         registeredUsers.add(new User("user2", "pass2", "Rakib", "rakib@mail.com"));
 
-        // Step 2: Add tour locations
+
         addTourLocations();
 
-        // Step 3: Login process
+
         User currentUser = login();
         if (currentUser == null) {
             System.out.println("Login failed. Exiting the program.");
             return;
         }
 
-        // Step 4: Proceed with booking after login
+
         System.out.println("\nWelcome, " + currentUser.getName() + "! You are logged in.");
         proceedWithTourBooking(currentUser);
     }
 
-    // Method to add tour locations
+
     private static void addTourLocations() {
         locations.add(new TourLocation("Sundarban"));
         locations.add(new TourLocation("Saint Martin Iland"));
-        locations.add(new TourLocation("Syleth"));
+        locations.add(new TourLocation("Sylhet"));
     }
 
-    // Login functionality
+
     private static User login() {
         System.out.println("Please log in to proceed with booking.");
         System.out.print("Username: ");
@@ -52,7 +52,7 @@ public class Main {
         return null;
     }
 
-    // Tour booking process
+
     private static void proceedWithTourBooking(User currentUser) {
         Tour tour = selectTourType();
         if (tour != null) {
@@ -71,14 +71,14 @@ public class Main {
         }
     }
 
-    // Display user information
+
     private static void showUserInfo(User user) {
         System.out.println("\nUser Information:");
         System.out.println("Name: " + user.getName());
         System.out.println("Email: " + user.getEmail());
     }
 
-    // Tour type selection with location
+
     private static Tour selectTourType() {
         System.out.println("Choose a tour type:");
         System.out.println("1. Single Tour\n2. Group Tour");
