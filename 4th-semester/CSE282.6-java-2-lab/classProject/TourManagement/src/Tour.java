@@ -1,20 +1,25 @@
-abstract class Tour {
+public abstract class Tour {
     protected String location;
     protected int days;
-    protected double chargePerPerson;
+    protected double pricePerDayPerPerson;
 
-    public Tour(String location, int days, double chargePerPerson) {
+    public Tour(String location, int days, double pricePerDayPerPerson) {
         this.location = location;
         this.days = days;
-        this.chargePerPerson = chargePerPerson;
+        this.pricePerDayPerPerson = pricePerDayPerPerson;
     }
 
-    public abstract double calculateTotalCharge();
-
-    public void showTourDetails() {
-        System.out.println("\nTour Location: " + location);
-        System.out.println("Tour Days: " + days);
-        System.out.println("Charge per Person: BDT " + chargePerPerson);
-        System.out.println("Total Charge: BDT " + calculateTotalCharge());
+    public String getLocation() {
+        return location;
     }
+
+    public int getDays() {
+        return days;
+    }
+
+    public double calculateTotalCharge() {
+        return days * pricePerDayPerPerson; // Total charge calculation
+    }
+
+    public abstract void showTourDetails();
 }

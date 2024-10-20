@@ -1,4 +1,4 @@
-class User {
+public class User {
     private String username;
     private String password;
     private String name;
@@ -10,7 +10,6 @@ class User {
         this.name = name;
         this.email = email;
     }
-
 
     public String getUsername() {
         return username;

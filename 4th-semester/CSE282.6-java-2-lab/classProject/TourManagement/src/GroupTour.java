@@ -1,19 +1,28 @@
-class GroupTour extends Tour {
-    private int groupSize;
+import java.util.ArrayList;
+import java.util.List;
 
-    public GroupTour(String location, int days, double chargePerPerson, int groupSize) {
-        super(location, days, chargePerPerson);
-        this.groupSize = groupSize;
+public class GroupTour extends Tour {
+    private List<GroupMember> groupMembers;
+
+    public GroupTour(String location, int days, double pricePerDayPerPerson) {
+        super(location, days, pricePerDayPerPerson);
+        this.groupMembers = new ArrayList<>();
     }
 
-    @Override
-    public double calculateTotalCharge() {
-        return days * chargePerPerson * groupSize;
+    public void addGroupMember(GroupMember member) {
+        groupMembers.add(member);
     }
 
     @Override
     public void showTourDetails() {
-        super.showTourDetails();
-        System.out.println("Group Size: " + groupSize);
+        System.out.println("Group Tour Details:");
+        System.out.println("Location: " + location);
+        System.out.println("Duration: " + days + " days");
+        System.out.println("Price per day per person: $" + pricePerDayPerPerson);
+        System.out.println("Total Charge: $" + calculateTotalCharge());
+        System.out.println("Group Members:");
+        for (GroupMember member : groupMembers) {
+            System.out.println(member.getName());
+        }
     }
 }
