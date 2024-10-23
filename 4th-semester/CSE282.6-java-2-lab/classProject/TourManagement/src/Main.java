@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+// Main class
 public class Main {
     private static List<User> registeredUsers = new ArrayList<>();
     private static List<TourLocation> locations = new ArrayList<>();
@@ -20,7 +21,11 @@ public class Main {
         }
 
         System.out.println("\nWelcome, " + currentUser.getName() + "! You are logged in.");
-        proceedWithTourBooking(currentUser);
+        try {
+            proceedWithTourBooking(currentUser);
+        } catch (TourBookingException e) {
+            System.out.println("Error during tour booking: " + e.getMessage());
+        }
     }
 
     private static void addTourLocations() {
@@ -46,7 +51,7 @@ public class Main {
         return null;
     }
 
-    private static void proceedWithTourBooking(User currentUser) {
+    private static void proceedWithTourBooking(User currentUser) throws TourBookingException {
         Tour tour = selectTourType(currentUser);
         if (tour != null) {
             tour.showTourDetails();
@@ -64,6 +69,8 @@ public class Main {
             } else {
                 System.out.println("Tour booking canceled.");
             }
+        } else {
+            throw new TourBookingException("Tour selection failed.");
         }
     }
 
@@ -73,7 +80,7 @@ public class Main {
         System.out.println("Email: " + user.getEmail());
     }
 
-    private static Tour selectTourType(User currentUser) {
+    private static Tour selectTourType(User currentUser) throws TourBookingException {
         System.out.println("Choose a tour type:");
         System.out.println("1. Single Tour\n2. Group Tour");
         int tourType = Integer.parseInt(scanner.nextLine());
@@ -86,8 +93,7 @@ public class Main {
         int locationChoice = Integer.parseInt(scanner.nextLine()) - 1;
 
         if (locationChoice < 0 || locationChoice >= locations.size()) {
-            System.out.println("Invalid location selection.");
-            return null;
+            throw new TourBookingException("Invalid location selection.");
         }
 
         TourLocation selectedLocation = locations.get(locationChoice);
@@ -108,17 +114,20 @@ public class Main {
             addGroupMembers(groupTour, groupSize, addSelf.equalsIgnoreCase("yes"));
             return groupTour;
         } else {
-            System.out.println("Invalid tour type.");
-            return null;
+            throw new TourBookingException("Invalid tour type selection.");
         }
     }
 
-    private static int getTourDays() {
+    private static int getTourDays() throws TourBookingException {
         System.out.print("Enter Number of Days: ");
-        return Integer.parseInt(scanner.nextLine());
+        int days = Integer.parseInt(scanner.nextLine());
+        if (days <= 0) {
+            throw new TourBookingException("Number of days must be greater than zero.");
+        }
+        return days;
     }
 
-    private static void addGroupMembers(GroupTour groupTour, int groupSize, boolean addSelf) {
+    private static void addGroupMembers(GroupTour groupTour, int groupSize, boolean addSelf) throws TourBookingException {
         int membersToAdd = addSelf ? groupSize - 1 : groupSize; // If user is added, reduce member count
 
         System.out.println("Enter details for " + membersToAdd + " group members:");
@@ -131,34 +140,41 @@ public class Main {
             String phone = scanner.nextLine();
             System.out.print("Enter Age for Member " + i + ": ");
             int age = Integer.parseInt(scanner.nextLine());
-
+            if (age <= 0) {
+                throw new TourBookingException("Age must be greater than zero.");
+            }
             groupTour.addGroupMember(new GroupMember(name, email, phone, age));
         }
     }
 
-    private static void processPayment(double amount, User currentUser, Tour tour) {
+    private static void processPayment(double amount, User currentUser, Tour tour) throws TourBookingException {
         System.out.println("Choose a payment method:");
         System.out.println("1. Card Payment");
         System.out.println("2. Mobile Banking");
         int paymentChoice = Integer.parseInt(scanner.nextLine());
 
         Payment payment;
+        String paymentMethod = "";
         switch (paymentChoice) {
             case 1:
                 payment = new CardPayment(amount);
+                paymentMethod = "Card Payment";
                 break;
             case 2:
-                // Assuming expected OTP is generated beforehand
                 String expectedOtp = "123456"; // Simulated OTP for demonstration
                 payment = new MobileBankingPayment(amount, expectedOtp);
+                paymentMethod = "Mobile Banking";
                 break;
             default:
-                System.out.println("Invalid payment method selected.");
-                return;
+                throw new TourBookingException("Invalid payment method selected.");
         }
 
-        payment.processPayment();
+        payment.processPayment(); // This might throw an exception based on payment processing logic
         showPaymentConfirmation(currentUser, tour, amount);
+
+        // Create and show the invoice
+        Invoice invoice = new Invoice(currentUser.getName(), currentUser.getEmail(), tour.getLocation(), tour.getDays(), amount, paymentMethod);
+        invoice.displayInvoice();
     }
 
     private static void showPaymentConfirmation(User user, Tour tour, double amount) {
