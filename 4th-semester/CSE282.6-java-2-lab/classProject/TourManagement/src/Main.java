@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Main class
+
 public class Main {
     private static List<User> registeredUsers = new ArrayList<>();
     private static List<TourLocation> locations = new ArrayList<>();
@@ -64,7 +64,7 @@ public class Main {
                 tour.showTourDetails();
                 System.out.println("Your tour has been confirmed! Have a great trip!");
 
-                // Payment Option
+
                 processPayment(tour.calculateTotalCharge(), currentUser, tour);
             } else {
                 System.out.println("Tour booking canceled.");

@@ -18,7 +18,7 @@ public abstract class Tour {
     }
 
     public double calculateTotalCharge() {
-        return days * pricePerDayPerPerson; // Total charge calculation
+        return days * pricePerDayPerPerson;
     }
 
     public abstract void showTourDetails();
