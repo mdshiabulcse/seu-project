@@ -56,9 +56,6 @@ int main(){
     Node* third= createNode(3,3.7,'Z');
 
     head->next=third;
-    third->pre=head;
-
-
 
     cout <<"Main doubly linked List:"<<endl;
     displayList(head);
